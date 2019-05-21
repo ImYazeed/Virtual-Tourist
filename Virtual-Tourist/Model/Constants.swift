@@ -12,7 +12,7 @@ struct FlickrAPI {
     static let apiKey = "9b5e37e57bc29dd485a87d2e3cf3266c"
     static let baseURL = "https://api.flickr.com/services/rest/?method="
     
-    struct URLkeys {
+    struct Parameters {
         static let apiKeyVar = "&api_key="
         static let latitude = "&lat="
         static let longitude = "&lon="
@@ -30,15 +30,14 @@ struct FlickrAPI {
         
         var stringValue: String {
             switch self {
-            case let .searchPhoto(latitude: latitude, longitude: longitude, page: page, perPage: perPage) :
-                return "\(FlickrAPI.baseURL)flickr.photos.search\(URLkeys.apiKeyVar)\(FlickrAPI.apiKey)\(URLkeys.latitude)\(latitude)\(URLkeys.longitude)\(longitude)\(URLkeys.extras)\(URLkeys.perPage)\(perPage)\(URLkeys.page)\(page)\(URLkeys.format)\(URLkeys.callBack)"
+            case let .searchPhoto(latitude, longitude, page, perPage) :
+                return "\(FlickrAPI.baseURL)flickr.photos.search\(Parameters.apiKeyVar)\(FlickrAPI.apiKey)\(Parameters.latitude)\(latitude)\(Parameters.longitude)\(longitude)\(Parameters.extras)\(Parameters.perPage)\(perPage)\(Parameters.page)\(page)\(Parameters.format)\(Parameters.callBack)"
             }
         }
         
         var url: URL {
             return URL(string: stringValue)!
         }
-        
         
     }
     
