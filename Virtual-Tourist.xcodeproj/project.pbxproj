@@ -70,7 +70,7 @@
 		BB6FD44C2293303A00FAF167 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB6FD43E22932C7000FAF167 /* Virtual_Tourist.xcdatamodeld */,
+				BB6FD452229394F100FAF167 /* CoreData */,
 				BB6FD4502293312E00FAF167 /* Constants.swift */,
 			);
 			path = Model;
@@ -100,6 +100,14 @@
 				BB6FD44322932C7200FAF167 /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		BB6FD452229394F100FAF167 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BB6FD43E22932C7000FAF167 /* Virtual_Tourist.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
