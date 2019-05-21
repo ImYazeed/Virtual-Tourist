@@ -17,6 +17,7 @@
 		BB6FD45422939EBC00FAF167 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6FD45322939EBC00FAF167 /* DataController.swift */; };
 		BB6FD4562293BD9C00FAF167 /* PinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6FD4552293BD9C00FAF167 /* PinManager.swift */; };
 		BB6FD4582293C20E00FAF167 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6FD4572293C20E00FAF167 /* PinAnnotation.swift */; };
+		BB6FD45A22947CE100FAF167 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6FD45922947CE100FAF167 /* AlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BB6FD45322939EBC00FAF167 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BB6FD4552293BD9C00FAF167 /* PinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinManager.swift; sourceTree = "<group>"; };
 		BB6FD4572293C20E00FAF167 /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		BB6FD45922947CE100FAF167 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				BB6FD43922932C7000FAF167 /* MapViewController.swift */,
+				BB6FD45922947CE100FAF167 /* AlbumViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				BB6FD43A22932C7000FAF167 /* MapViewController.swift in Sources */,
 				BB6FD44022932C7000FAF167 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				BB6FD4562293BD9C00FAF167 /* PinManager.swift in Sources */,
+				BB6FD45A22947CE100FAF167 /* AlbumViewController.swift in Sources */,
 				BB6FD43822932C7000FAF167 /* AppDelegate.swift in Sources */,
 				BB6FD4512293312E00FAF167 /* Constants.swift in Sources */,
 				BB6FD4582293C20E00FAF167 /* PinAnnotation.swift in Sources */,
