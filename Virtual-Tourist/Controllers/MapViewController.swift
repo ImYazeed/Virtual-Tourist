@@ -25,9 +25,9 @@ class MapViewController: UIViewController {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
         if let pins = fetchedResultController.fetchedObjects {
-             showPinsOnTheMap(pins: pins)
+            showPinsOnTheMap(pins: pins)
         }
-       
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -54,9 +54,20 @@ class MapViewController: UIViewController {
     }
     
     func showPinsOnTheMap(pins: [Pin]) {
+        if mapView.annotations.count != 0 {
+            mapView.removeAnnotations(mapView.annotations)
+        }
         for pin in pins {
             addAnnotation(pin: pin)
         }
+    }
+    
+    func pushAlbumVC(pin: Pin) {
+        guard let albumVC = storyboard?.instantiateViewController(withIdentifier: "AlbumVC") as? AlbumViewController else {
+            return
+        }
+        albumVC.selectedPin = pin
+        navigationController?.pushViewController(albumVC, animated: true)
     }
 }
 
@@ -93,9 +104,20 @@ extension MapViewController: MKMapViewDelegate {
         return view
     }
     
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let annotation = (view.annotation) as! PinAnnotation
+        if let pin = annotation.pinObject {
+            pushAlbumVC(pin: pin)
+        }
+        mapView.deselectAnnotation(annotation, animated: true)
+    }
+    
     func addAnnotation(pin: Pin) {
         let pinAnnotation = PinAnnotation(pin: pin)
         mapView.addAnnotation(pinAnnotation)
     }
+    
 }
 
