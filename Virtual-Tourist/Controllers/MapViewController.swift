@@ -87,6 +87,7 @@ extension MapViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
+
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

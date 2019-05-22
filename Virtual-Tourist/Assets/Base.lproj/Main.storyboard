@@ -35,9 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Virtual Tourist" id="SCh-Ei-AHb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Tf-av-H9r"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Virtual Tourist" id="SCh-Ei-AHb"/>
                     <connections>
                         <outlet property="longPressGesture" destination="rSi-4q-2ii" id="5D1-F8-MGb"/>
                         <outlet property="mapView" destination="Vrt-pa-PT5" id="BUw-uu-3Bh"/>
