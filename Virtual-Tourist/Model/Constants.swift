@@ -21,6 +21,7 @@ struct FlickrAPI {
         static let page = "&page="
         static let format = "&format=json"
         static let callBack = "&nojsoncallback=1"
+        static let radious = "&radius=20"
     }
     
     enum EndPoints {
@@ -31,7 +32,7 @@ struct FlickrAPI {
         var stringValue: String {
             switch self {
             case let .searchPhoto(latitude, longitude, page, perPage) :
-                return "\(FlickrAPI.baseURL)flickr.photos.search\(Parameters.apiKeyVar)\(FlickrAPI.apiKey)\(Parameters.latitude)\(latitude)\(Parameters.longitude)\(longitude)\(Parameters.extras)\(Parameters.perPage)\(perPage)\(Parameters.page)\(page)\(Parameters.format)\(Parameters.callBack)"
+                return "\(FlickrAPI.baseURL)flickr.photos.search\(Parameters.apiKeyVar)\(FlickrAPI.apiKey)\(Parameters.latitude)\(latitude)\(Parameters.longitude)\(longitude)\(Parameters.extras)\(Parameters.perPage)\(perPage)\(Parameters.radious)\(Parameters.page)\(page)\(Parameters.format)\(Parameters.callBack)"
             }
         }
         

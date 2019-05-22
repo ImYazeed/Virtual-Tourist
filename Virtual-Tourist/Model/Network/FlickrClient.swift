@@ -15,8 +15,8 @@ class FlickrClient {
         // get Random page between 1...100
         let page = Int.random(in: 1...100)
         
-        let url = FlickrAPI.EndPoints.searchPhoto(latitude: latitude, longitude: longitude, page: page, perPage: 12).url
-        
+        let url = FlickrAPI.EndPoints.searchPhoto(latitude: latitude, longitude: longitude, page: page, perPage: 9).url
+        print(url)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 DispatchQueue.main.async {
@@ -27,7 +27,7 @@ class FlickrClient {
             guard let data = data else {
                 return
             }
-            
+            print(data)
             let decoder = JSONDecoder()
             
             do {

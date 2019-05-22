@@ -19,6 +19,7 @@ class PhotoManager {
         let photo = Photo(context: DataController.shared.viewContext)
         photo.createdAt = Date()
         photo.imageURL = imageUrl
+        photo.pin = pin
     }
     
     class func savePhotos(pin: Pin, images: [FlickerImage]) {
@@ -26,6 +27,11 @@ class PhotoManager {
         for image in images {
             getNewPhoto(pin: pin, imageUrl: image.urlM)
         }
+        DataController.shared.saveContext()
+    }
+    
+    class func deletePhoto(photo: Photo) {
+        DataController.shared.viewContext.delete(photo)
         DataController.shared.saveContext()
     }
 }
