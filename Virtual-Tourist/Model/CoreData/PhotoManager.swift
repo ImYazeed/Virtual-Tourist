@@ -32,7 +32,14 @@ class PhotoManager {
     
     class func deletePhoto(photo: Photo) {
         DataController.shared.viewContext.delete(photo)
+    }
+    
+    class func deletePhotos(photos: [Photo]) {
+        for photo in photos {
+            deletePhoto(photo: photo)
+        }
         DataController.shared.saveContext()
     }
+    
 }
 

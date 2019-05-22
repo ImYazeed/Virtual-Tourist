@@ -45,6 +45,7 @@ class AlbumViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupFetchedResultsController()
         ensurePhotos()
     }
     
@@ -57,7 +58,11 @@ class AlbumViewController: UIViewController {
     }
     
     @IBAction func newCollectionClicked(_ sender: Any) {
-       
+        guard fetchedResultsController.fetchedObjects!.count > 0 else {
+            return
+        }
+       PhotoManager.deletePhotos(photos: fetchedResultsController.fetchedObjects!)
+        loadPhotos()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -86,7 +91,7 @@ extension AlbumViewController: UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let photoToBeDeleted = fetchedResultsController.object(at: indexPath)
-       PhotoManager.deletePhoto(photo: photoToBeDeleted)
+       PhotoManager.deletePhotos(photos: [photoToBeDeleted])
     }
     
 }
