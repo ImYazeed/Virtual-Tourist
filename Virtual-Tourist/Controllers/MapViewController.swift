@@ -15,12 +15,13 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var longPressGesture: UILongPressGestureRecognizer!
     var fetchedResultController: NSFetchedResultsController<Pin>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupFetchedResultsController()
         setupMapView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
@@ -34,23 +35,11 @@ class MapViewController: UIViewController {
         fetchedResultController = nil
     }
     
+    // MARK: UI Handling
+    
     func setupMapView() {
         mapView.delegate = self
         mapView.addGestureRecognizer(longPressGesture)
-    }
-    
-    @IBAction func gestureLongPressedAction(_ sender: Any) {
-        
-        guard let gesture = sender as? UILongPressGestureRecognizer else {
-            return
-        }
-        guard gesture.state == .began else {
-            return
-        }
-        let pressedPoint = gesture.location(in: mapView)
-        let pointCordination = mapView.convert(pressedPoint, toCoordinateFrom: mapView)
-        let pin = PinManager.getNewPin(latitude: pointCordination.latitude, longitude: pointCordination.longitude)
-        addAnnotation(pin: pin)
     }
     
     func showPinsOnTheMap(pins: [Pin]) {
@@ -68,6 +57,22 @@ class MapViewController: UIViewController {
         }
         albumVC.selectedPin = pin
         navigationController?.pushViewController(albumVC, animated: true)
+    }
+    
+    // MARK: ACTIONS
+    
+    @IBAction func gestureLongPressedAction(_ sender: Any) {
+        
+        guard let gesture = sender as? UILongPressGestureRecognizer else {
+            return
+        }
+        guard gesture.state == .began else {
+            return
+        }
+        let pressedPoint = gesture.location(in: mapView)
+        let pointCordination = mapView.convert(pressedPoint, toCoordinateFrom: mapView)
+        let pin = PinManager.getNewPin(latitude: pointCordination.latitude, longitude: pointCordination.longitude)
+        addAnnotation(pin: pin)
     }
 }
 

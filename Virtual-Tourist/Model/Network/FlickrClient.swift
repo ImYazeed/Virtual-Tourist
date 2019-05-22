@@ -12,11 +12,12 @@ import Foundation
 class FlickrClient {
     
     class func fetchPhotos(latitude: Double, longitude: Double, sucssess: @escaping ([FlickerImage]) -> Void, failure: @escaping (Error) -> Void) {
+        
         // get Random page between 1...100
         let page = Int.random(in: 1...100)
         
         let url = FlickrAPI.EndPoints.searchPhoto(latitude: latitude, longitude: longitude, page: page, perPage: 9).url
-        print(url)
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 DispatchQueue.main.async {
@@ -27,7 +28,7 @@ class FlickrClient {
             guard let data = data else {
                 return
             }
-            print(data)
+            
             let decoder = JSONDecoder()
             
             do {

@@ -23,6 +23,19 @@ class AlbumViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFetchedResultsController()
+        ensurePhotosAppearance()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
+    }
+    
+    // MARK: UI Handling
+    
     func configureUI() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -37,16 +50,10 @@ class AlbumViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
-    fileprivate func ensurePhotos() {
+    fileprivate func ensurePhotosAppearance() {
         if fetchedResultsController.fetchedObjects?.count == 0 {
             loadPhotos()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupFetchedResultsController()
-        ensurePhotos()
     }
     
     func loadPhotos() {
@@ -57,6 +64,8 @@ class AlbumViewController: UIViewController {
         }
     }
     
+    // MARK: ACTIONS
+    
     @IBAction func newCollectionClicked(_ sender: Any) {
         guard fetchedResultsController.fetchedObjects!.count > 0 else {
             return
@@ -64,10 +73,7 @@ class AlbumViewController: UIViewController {
        PhotoManager.deletePhotos(photos: fetchedResultsController.fetchedObjects!)
         loadPhotos()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        fetchedResultsController = nil
-    }
+
 }
 
 
@@ -130,11 +136,8 @@ extension AlbumViewController: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .insert:
+        case .insert,.delete :
             collectionView.reloadData()
-        case .delete:
-            collectionView.reloadData()
-            
         default:
             break
         }

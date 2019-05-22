@@ -21,7 +21,7 @@ struct FlickrAPI {
         static let page = "&page="
         static let format = "&format=json"
         static let callBack = "&nojsoncallback=1"
-        static let radious = "&radius=20"
+        static let radious = "&radius=10"
     }
     
     enum EndPoints {
