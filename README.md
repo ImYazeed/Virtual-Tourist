@@ -12,7 +12,8 @@ For editing the code:
 Xcode 10.1+
 Swift 4.2+
 MacOS system
-Installation
+
+## Installation
 
 Go to the following repository: Virtual Tourist Then clone or download the project. If you chose to download the project extract the Zip file and open the Virtual Tourist.xcworkspace file inside the Movie folder with xCode.
 
