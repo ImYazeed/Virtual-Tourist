@@ -13,7 +13,7 @@ This app allows you to drop pins on amywhere on the map and let's you see photos
 
 ## Installation
 Go to the following repository: [Virtual-Tourist](https://github.com/ImYazeed/Virtual-Tourist)
-Then clone or download the project. If you chose to download the project extract the Zip file and open the Virtual-Tourist.xcworkspace file inside the Movie folder with xCode.
+Then clone or download the project. If you chose to download the project extract the Zip file and open the Virtual-Tourist.xcworkspace file inside the Virtual-Tourist folder with xCode.
 
 
 ### You can build the application on your device by 
