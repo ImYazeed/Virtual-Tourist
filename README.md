@@ -1,7 +1,7 @@
 # Virtual-Tourist
 
 ## Introduction
-This app allows you to drop pins on amywhere on the map and let's you see photos from the Flickr API, and saves all your pins that you have placed on the map as will as thier corresponding photos.
+This app allows you to drop pins on anywhere on the map and let's you see photos from the Flickr API, and saves all your pins that you have placed on the map as will as thier corresponding photos.
  
 ## Requirements
 * For installing:
