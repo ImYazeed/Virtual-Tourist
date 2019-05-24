@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Alamofire
 
 class FlickrClient {
     
@@ -18,31 +18,34 @@ class FlickrClient {
         
         let url = FlickrAPI.EndPoints.searchPhoto(latitude: latitude, longitude: longitude, page: page, perPage: 9).url
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    failure(error!)
+        AF.request(url).responseJSON { (response) in
+            switch response.result {
+                
+            case .success :
+                
+                guard let data = response.data else {
+                    return
                 }
-            }
-            
-            guard let data = data else {
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let flickerResponse = try decoder.decode(FlickerResponse.self, from: data)
-                DispatchQueue.main.async {
-                    sucssess(flickerResponse.photos.photo)
+                
+                let decoder = JSONDecoder()
+                
+                do {
+                    let flickerResponse = try decoder.decode(FlickerResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        sucssess(flickerResponse.photos.photo)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        failure(error)
+                    }
                 }
-            } catch {
+                
+            case .failure(let error):
                 DispatchQueue.main.async {
                     failure(error)
                 }
+                
             }
         }
-        
-        task.resume()
     }
 }

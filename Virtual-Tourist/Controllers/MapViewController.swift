@@ -12,8 +12,10 @@ import CoreData
 
 class MapViewController: UIViewController {
     
+    // Outlet
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var longPressGesture: UILongPressGestureRecognizer!
+    // Variables
     var fetchedResultController: NSFetchedResultsController<Pin>!
     
     override func viewDidLoad() {

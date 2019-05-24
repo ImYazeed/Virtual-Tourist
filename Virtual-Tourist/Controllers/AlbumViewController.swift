@@ -12,11 +12,12 @@ import MapKit
 
 class AlbumViewController: UIViewController {
     
-    var selectedPin: Pin!
-    var fetchedResultsController:NSFetchedResultsController<Photo>!
+    // Outlet
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    // Variables
+    var selectedPin: Pin!
+    var fetchedResultsController:NSFetchedResultsController<Photo>!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
