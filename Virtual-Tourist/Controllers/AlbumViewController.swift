@@ -59,7 +59,14 @@ class AlbumViewController: UIViewController {
     
     func loadPhotos() {
         FlickrClient.fetchPhotos(latitude: self.selectedPin.latitude, longitude: self.selectedPin.longitude, sucssess: { images in
-            PhotoManager.savePhotos(pin: self.selectedPin, images: images)
+            
+            if images.count == 0 {
+                AlertManager.shared.showFailureFromViewController(viewController: self, message: "There is no photos in here")
+            }
+            else {
+                PhotoManager.savePhotos(pin: self.selectedPin, images: images)
+            }
+           
         }) { (error) in
             AlertManager.shared.showFailureFromViewController(viewController: self, message: error.localizedDescription)
         }
